@@ -9,6 +9,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+      - run: sudo apt-get update && sudo apt-get install esbuild
       - run: make
       - uses: actions/upload-artifact@v4
         with:
