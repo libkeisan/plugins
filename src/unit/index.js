@@ -25,7 +25,7 @@ export default {
   rules: [
     {
       str: `
-        convert: K_TO | K_AS | K_IN
+        convert: I_TO | I_AS | I_IN
         (NUMBER IDENT+ | IDENT+ NUMBER) convert IDENT+ -> cast
       `,
       after: 'binop',

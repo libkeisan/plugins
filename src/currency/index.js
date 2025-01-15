@@ -25,7 +25,7 @@ class Currency {
 }
 
 export default {
-  rules: ['NUMBER IDENT[3] (K_TO | K_AS | K_IN) IDENT[3] -> currency'],
+  rules: ['NUMBER IDENT[3] (I_TO | I_AS | I_IN) IDENT[3] -> currency'],
   action: (name, tokens) => {
     const currency = new Currency();
     const rate1 = currency.get(tokens[1].value);

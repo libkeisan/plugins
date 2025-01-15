@@ -56,7 +56,7 @@ export default {
         special_date: I_TODAY | I_TOMORROW | I_YESTERDAY | I_NOW
 
         n24 COLON n60 (COLON n60)? ampm? | n24 ampm -> time
-        special_date K_IN IDENT+ -> timezone_set_special
+        special_date I_IN IDENT+ -> timezone_set_special
         special_date -> date
         date_comp date_sep? date_comp date_sep? date_comp? -> date
         DATETIME DATETIME -> datetime
@@ -68,14 +68,14 @@ export default {
         duration_unit: I_SECOND | I_SECONDS | I_SEC | I_SECS | I_SEC | I_MINUTE | I_MINUTES | I_MIN | I_MINS | I_M | I_HOUR | I_HOURS | I_HR | I_HRS | I_H | I_DAY | I_DAYS | I_WEEK | I_WEEKS | I_MONTH | I_MONTHS | I_YEAR | I_YEARS
         duration: NUMBER duration_unit
 
-        duration+ (K_AND duration)? -> duration
-        DURATION+ (K_AND DURATION)? (K_TO | K_AS | K_IN) duration_unit -> duration_convert
+        duration+ (I_AND duration)? -> duration
+        DURATION+ (I_AND DURATION)? (I_TO | I_AS | I_IN) duration_unit -> duration_convert
         DATETIME (PLUS | MINUS) DURATION+ -> date_op
         DATETIME MINUS DATETIME -> date_op
 
         DATETIME IDENT+ -> timezone_with
-        DATETIME K_IN (IDENT | K_OF)+ -> timezone_with
-        DATETIME I_CONVERTED? K_TO (IDENT | K_OF)+ -> timezone_set
+        DATETIME I_IN (IDENT | I_OF)+ -> timezone_with
+        DATETIME I_CONVERTED? I_TO (IDENT | I_OF)+ -> timezone_set
     `,
       after: 'neg',
     },

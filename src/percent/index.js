@@ -26,9 +26,9 @@ const percent = (tokens, isTo) => {
 export default {
   rules: [
     `
-      NUMBER IDENT* K_AS I_% K_OF NUMBER -> percent_to
-      NUMBER IDENT* (K_TO | K_AS | K_IN) I_% -> percent_to
-      NUMBER IDENT* K_IS NUMBER K_OF K_WHAT -> percent_of
+      NUMBER I_AS I_% I_OF NUMBER -> percent_to
+      NUMBER (I_TO | I_AS | I_IN) I_% -> percent_to
+      NUMBER I_IS NUMBER I_OF I_WHAT -> percent_of
     `,
   ],
   action: (name, tokens) => {
