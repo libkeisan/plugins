@@ -21,7 +21,7 @@ export const search = (str) => {
 export const setSpecial = (tokens, ids) => {
   const parsed = parseDate([tokens[0]], ids);
   if (parsed.length !== 1 || parsed[0].type !== 'DATETIME') return null;
-  return set([parsed[0], { type: 'KEYWORD', value: 'to' }, ...tokens.slice(1)]);
+  return set([parsed[0], { type: 'IDENT', value: 'to' }, ...tokens.slice(1)]);
 };
 
 const op = (tokens, isSet) => {
@@ -35,9 +35,6 @@ const op = (tokens, isSet) => {
       switch (t.type) {
         case 'IDENT':
           return t.value;
-        case 'KEYWORD':
-          if (t.value?.toLowerCase() === 'of') return t.value;
-          return null;
         default:
           return null;
       }

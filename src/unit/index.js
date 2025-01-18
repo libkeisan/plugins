@@ -43,6 +43,10 @@ export default {
           num = token.value;
           break;
         case 'IDENT':
+          if (['TO', 'AS', 'IN'].includes(token.value.toUpperCase())) {
+            keyword = token.value;
+            break;
+          }
           if (!keyword) {
             if (src) src += ' ' + token.value;
             else src = token.value;
@@ -50,9 +54,6 @@ export default {
             if (dst) dst += ' ' + token.value;
             else dst = token.value;
           }
-          break;
-        case 'KEYWORD':
-          keyword = token.value;
           break;
       }
     }

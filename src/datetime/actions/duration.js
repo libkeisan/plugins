@@ -11,12 +11,11 @@ export const duration = (tokens) => {
         list.push(new Duration({ value: parseInt(num.value) }));
         break;
       case 'IDENT':
+        if (token.value.toLowerCase() === 'and') break;
         const unit = parseUnit(token.value);
         if (unit === UNITS.UNKNOWN) return null;
         if (list.length === 0) return null;
         list[list.length - 1].unit = unit;
-        break;
-      case 'KEYWORD':
         break;
       default:
         return null;
@@ -36,7 +35,7 @@ export const convert = (tokens) => {
         const dur = token.value;
         seconds += dur.getSeconds();
         break;
-      case 'KEYWORD':
+      case 'IDENT':
         break;
       default:
         return null;
